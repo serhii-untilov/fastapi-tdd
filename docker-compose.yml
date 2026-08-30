@@ -1,0 +1,30 @@
+name: fastapi-development
+
+networks:
+  dev-network:
+    driver: bridge
+
+services:
+
+  dev-db:
+    container_name: dev-db
+    image: postgres:16.14-alpine3.24
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - "5443:5432"
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+    networks:
+      - dev-network
+
+  adminer:
+      container_name: db-adminer
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080
+      networks:
+        - dev-network
+
