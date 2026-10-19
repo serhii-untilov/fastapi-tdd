@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.db_connection import get_db_session
 from app.models.category import Category
-from app.schemas.category_schema import CategoryCreate
+from app.schemas.category_schema import CategoryCreate, CategoryReturn
 from app.schemas.responses import IdResponse
 
 # from app.utils.category_utils import check_existing_category
@@ -36,6 +36,16 @@ def create_category(
     except Exception as e:
         db.rollback()
         logger.error(f"Unexpected error while creating category: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error") from e
+
+
+@router.get("/", response_model=list[CategoryReturn], status_code=200)
+def category_list(db: Session = Depends(get_db_session)) -> list[CategoryReturn]:
+    try:
+        categories = db.query(Category).all()
+        return categories
+    except Exception as e:
+        logger.error(f"Unexpected error while getting category list: {e}")
         raise HTTPException(status_code=500, detail="Internal server error") from e
 
 

@@ -1120,3 +1120,153 @@
 2026-10-19 09:29:14,402 - DEBUG - Using selector: EpollSelector
 2026-10-19 09:29:14,406 - ERROR - Unexpected error while creating category: Internal server error
 2026-10-19 09:29:14,407 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:25:16,662 - DEBUG - Looking for locale `en_US` in provider `faker.providers.address`.
+2026-10-19 11:25:16,664 - DEBUG - Provider `faker.providers.address` has been localized to `en_US`.
+2026-10-19 11:25:16,666 - DEBUG - Looking for locale `en_US` in provider `faker.providers.automotive`.
+2026-10-19 11:25:16,667 - DEBUG - Provider `faker.providers.automotive` has been localized to `en_US`.
+2026-10-19 11:25:16,668 - DEBUG - Looking for locale `en_US` in provider `faker.providers.bank`.
+2026-10-19 11:25:16,669 - DEBUG - Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+2026-10-19 11:25:16,670 - DEBUG - Looking for locale `en_US` in provider `faker.providers.barcode`.
+2026-10-19 11:25:16,670 - DEBUG - Provider `faker.providers.barcode` has been localized to `en_US`.
+2026-10-19 11:25:16,671 - DEBUG - Looking for locale `en_US` in provider `faker.providers.color`.
+2026-10-19 11:25:16,672 - DEBUG - Provider `faker.providers.color` has been localized to `en_US`.
+2026-10-19 11:25:16,673 - DEBUG - Looking for locale `en_US` in provider `faker.providers.company`.
+2026-10-19 11:25:16,674 - DEBUG - Provider `faker.providers.company` has been localized to `en_US`.
+2026-10-19 11:25:16,674 - DEBUG - Looking for locale `en_US` in provider `faker.providers.credit_card`.
+2026-10-19 11:25:16,675 - DEBUG - Provider `faker.providers.credit_card` has been localized to `en_US`.
+2026-10-19 11:25:16,675 - DEBUG - Looking for locale `en_US` in provider `faker.providers.currency`.
+2026-10-19 11:25:16,676 - DEBUG - Provider `faker.providers.currency` has been localized to `en_US`.
+2026-10-19 11:25:16,677 - DEBUG - Looking for locale `en_US` in provider `faker.providers.date_time`.
+2026-10-19 11:25:16,678 - DEBUG - Provider `faker.providers.date_time` has been localized to `en_US`.
+2026-10-19 11:25:16,679 - DEBUG - Provider `faker.providers.doi` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,679 - DEBUG - Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,679 - DEBUG - Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,679 - DEBUG - Looking for locale `en_US` in provider `faker.providers.geo`.
+2026-10-19 11:25:16,679 - DEBUG - Provider `faker.providers.geo` has been localized to `en_US`.
+2026-10-19 11:25:16,680 - DEBUG - Looking for locale `en_US` in provider `faker.providers.internet`.
+2026-10-19 11:25:16,681 - DEBUG - Provider `faker.providers.internet` has been localized to `en_US`.
+2026-10-19 11:25:16,681 - DEBUG - Looking for locale `en_US` in provider `faker.providers.isbn`.
+2026-10-19 11:25:16,682 - DEBUG - Provider `faker.providers.isbn` has been localized to `en_US`.
+2026-10-19 11:25:16,682 - DEBUG - Looking for locale `en_US` in provider `faker.providers.job`.
+2026-10-19 11:25:16,683 - DEBUG - Provider `faker.providers.job` has been localized to `en_US`.
+2026-10-19 11:25:16,684 - DEBUG - Looking for locale `en_US` in provider `faker.providers.lorem`.
+2026-10-19 11:25:16,684 - DEBUG - Provider `faker.providers.lorem` has been localized to `en_US`.
+2026-10-19 11:25:16,685 - DEBUG - Looking for locale `en_US` in provider `faker.providers.misc`.
+2026-10-19 11:25:16,685 - DEBUG - Provider `faker.providers.misc` has been localized to `en_US`.
+2026-10-19 11:25:16,685 - DEBUG - Looking for locale `en_US` in provider `faker.providers.passport`.
+2026-10-19 11:25:16,685 - DEBUG - Provider `faker.providers.passport` has been localized to `en_US`.
+2026-10-19 11:25:16,686 - DEBUG - Looking for locale `en_US` in provider `faker.providers.person`.
+2026-10-19 11:25:16,688 - DEBUG - Provider `faker.providers.person` has been localized to `en_US`.
+2026-10-19 11:25:16,694 - DEBUG - Looking for locale `en_US` in provider `faker.providers.phone_number`.
+2026-10-19 11:25:16,695 - DEBUG - Provider `faker.providers.phone_number` has been localized to `en_US`.
+2026-10-19 11:25:16,696 - DEBUG - Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,696 - DEBUG - Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,696 - DEBUG - Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,696 - DEBUG - Looking for locale `en_US` in provider `faker.providers.ssn`.
+2026-10-19 11:25:16,698 - DEBUG - Provider `faker.providers.ssn` has been localized to `en_US`.
+2026-10-19 11:25:16,699 - DEBUG - Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:25:16,706 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,737 - ERROR - Unexpected error while getting category list: (psycopg2.errors.UndefinedTable) relation "categories" does not exist
+LINE 2: FROM categories
+             ^
+
+[SQL: SELECT categories.id AS categories_id, categories.name AS categories_name, categories.slug AS categories_slug, categories.is_active AS categories_is_active, categories.level AS categories_level, categories.parent_id AS categories_parent_id 
+FROM categories]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-10-19 11:25:16,738 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:25:16,781 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,785 - ERROR - Unexpected error while getting category list: (psycopg2.errors.UndefinedTable) relation "categories" does not exist
+LINE 2: FROM categories
+             ^
+
+[SQL: SELECT categories.id AS categories_id, categories.name AS categories_name, categories.slug AS categories_slug, categories.is_active AS categories_is_active, categories.level AS categories_level, categories.parent_id AS categories_parent_id 
+FROM categories]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-10-19 11:25:16,786 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:25:16,792 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,795 - ERROR - Unexpected error while getting category list: Internal server error
+2026-10-19 11:25:16,795 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:25:16,799 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,804 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 201 Created"
+2026-10-19 11:25:16,807 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,811 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 400 Bad Request"
+2026-10-19 11:25:16,813 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,817 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 400 Bad Request"
+2026-10-19 11:25:16,820 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:25:16,823 - ERROR - Unexpected error while creating category: Internal server error
+2026-10-19 11:25:16,823 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:26:27,002 - DEBUG - Looking for locale `en_US` in provider `faker.providers.address`.
+2026-10-19 11:26:27,004 - DEBUG - Provider `faker.providers.address` has been localized to `en_US`.
+2026-10-19 11:26:27,007 - DEBUG - Looking for locale `en_US` in provider `faker.providers.automotive`.
+2026-10-19 11:26:27,008 - DEBUG - Provider `faker.providers.automotive` has been localized to `en_US`.
+2026-10-19 11:26:27,009 - DEBUG - Looking for locale `en_US` in provider `faker.providers.bank`.
+2026-10-19 11:26:27,010 - DEBUG - Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+2026-10-19 11:26:27,011 - DEBUG - Looking for locale `en_US` in provider `faker.providers.barcode`.
+2026-10-19 11:26:27,011 - DEBUG - Provider `faker.providers.barcode` has been localized to `en_US`.
+2026-10-19 11:26:27,012 - DEBUG - Looking for locale `en_US` in provider `faker.providers.color`.
+2026-10-19 11:26:27,013 - DEBUG - Provider `faker.providers.color` has been localized to `en_US`.
+2026-10-19 11:26:27,013 - DEBUG - Looking for locale `en_US` in provider `faker.providers.company`.
+2026-10-19 11:26:27,014 - DEBUG - Provider `faker.providers.company` has been localized to `en_US`.
+2026-10-19 11:26:27,015 - DEBUG - Looking for locale `en_US` in provider `faker.providers.credit_card`.
+2026-10-19 11:26:27,015 - DEBUG - Provider `faker.providers.credit_card` has been localized to `en_US`.
+2026-10-19 11:26:27,016 - DEBUG - Looking for locale `en_US` in provider `faker.providers.currency`.
+2026-10-19 11:26:27,016 - DEBUG - Provider `faker.providers.currency` has been localized to `en_US`.
+2026-10-19 11:26:27,017 - DEBUG - Looking for locale `en_US` in provider `faker.providers.date_time`.
+2026-10-19 11:26:27,018 - DEBUG - Provider `faker.providers.date_time` has been localized to `en_US`.
+2026-10-19 11:26:27,018 - DEBUG - Provider `faker.providers.doi` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,019 - DEBUG - Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,019 - DEBUG - Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,019 - DEBUG - Looking for locale `en_US` in provider `faker.providers.geo`.
+2026-10-19 11:26:27,019 - DEBUG - Provider `faker.providers.geo` has been localized to `en_US`.
+2026-10-19 11:26:27,020 - DEBUG - Looking for locale `en_US` in provider `faker.providers.internet`.
+2026-10-19 11:26:27,020 - DEBUG - Provider `faker.providers.internet` has been localized to `en_US`.
+2026-10-19 11:26:27,021 - DEBUG - Looking for locale `en_US` in provider `faker.providers.isbn`.
+2026-10-19 11:26:27,021 - DEBUG - Provider `faker.providers.isbn` has been localized to `en_US`.
+2026-10-19 11:26:27,022 - DEBUG - Looking for locale `en_US` in provider `faker.providers.job`.
+2026-10-19 11:26:27,023 - DEBUG - Provider `faker.providers.job` has been localized to `en_US`.
+2026-10-19 11:26:27,023 - DEBUG - Looking for locale `en_US` in provider `faker.providers.lorem`.
+2026-10-19 11:26:27,024 - DEBUG - Provider `faker.providers.lorem` has been localized to `en_US`.
+2026-10-19 11:26:27,024 - DEBUG - Looking for locale `en_US` in provider `faker.providers.misc`.
+2026-10-19 11:26:27,024 - DEBUG - Provider `faker.providers.misc` has been localized to `en_US`.
+2026-10-19 11:26:27,025 - DEBUG - Looking for locale `en_US` in provider `faker.providers.passport`.
+2026-10-19 11:26:27,025 - DEBUG - Provider `faker.providers.passport` has been localized to `en_US`.
+2026-10-19 11:26:27,026 - DEBUG - Looking for locale `en_US` in provider `faker.providers.person`.
+2026-10-19 11:26:27,027 - DEBUG - Provider `faker.providers.person` has been localized to `en_US`.
+2026-10-19 11:26:27,033 - DEBUG - Looking for locale `en_US` in provider `faker.providers.phone_number`.
+2026-10-19 11:26:27,034 - DEBUG - Provider `faker.providers.phone_number` has been localized to `en_US`.
+2026-10-19 11:26:27,035 - DEBUG - Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,035 - DEBUG - Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,035 - DEBUG - Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,035 - DEBUG - Looking for locale `en_US` in provider `faker.providers.ssn`.
+2026-10-19 11:26:27,036 - DEBUG - Provider `faker.providers.ssn` has been localized to `en_US`.
+2026-10-19 11:26:27,037 - DEBUG - Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not used for this provider.
+2026-10-19 11:26:27,048 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,082 - ERROR - Unexpected error while getting category list: (psycopg2.errors.UndefinedTable) relation "categories" does not exist
+LINE 2: FROM categories
+             ^
+
+[SQL: SELECT categories.id AS categories_id, categories.name AS categories_name, categories.slug AS categories_slug, categories.is_active AS categories_is_active, categories.level AS categories_level, categories.parent_id AS categories_parent_id 
+FROM categories]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-10-19 11:26:27,083 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:26:27,127 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,131 - ERROR - Unexpected error while getting category list: (psycopg2.errors.UndefinedTable) relation "categories" does not exist
+LINE 2: FROM categories
+             ^
+
+[SQL: SELECT categories.id AS categories_id, categories.name AS categories_name, categories.slug AS categories_slug, categories.is_active AS categories_is_active, categories.level AS categories_level, categories.parent_id AS categories_parent_id 
+FROM categories]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-10-19 11:26:27,131 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:26:27,138 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,141 - ERROR - Unexpected error while getting category list: Internal server error
+2026-10-19 11:26:27,142 - INFO - HTTP Request: GET http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
+2026-10-19 11:26:27,147 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,155 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 201 Created"
+2026-10-19 11:26:27,158 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,161 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 400 Bad Request"
+2026-10-19 11:26:27,164 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,173 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 400 Bad Request"
+2026-10-19 11:26:27,178 - DEBUG - Using selector: EpollSelector
+2026-10-19 11:26:27,182 - ERROR - Unexpected error while creating category: Internal server error
+2026-10-19 11:26:27,182 - INFO - HTTP Request: POST http://testserver/api/category/ "HTTP/1.1 500 Internal Server Error"
