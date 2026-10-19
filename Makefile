@@ -1,4 +1,4 @@
-.PHONY: freeze install dev migration-autogen-dev migrate-dev test test-model test-structure
+.PHONY: freeze install dev migration-autogen-dev migrate-dev test model-test structure-test unit-test schema-test
 
 COMMENT ?="update"
 REVISION ?= head
@@ -17,13 +17,17 @@ db:
 up:
 	docker compose up -d
 dev: up
-	uvicorn main:app --reload
+	uvicorn app.main:app --reload
 test:
 	pytest -v --maxfail=0 -s
-test-model:
+model-test:
 	pytest -v --maxfail=0 -m model
-test-structure:
+structure-test:
 	pytest -v --maxfail=0 -m structure
+unit-test:
+	pytest -v --maxfail=0 -m unit
+schema-test:
+	pytest -v --maxfail=0 -m schema
 
 
 # Alembic migrations
