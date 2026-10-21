@@ -19,15 +19,15 @@ up:
 dev: up
 	uvicorn app.main:app --reload
 test:
-	pytest -v --maxfail=0 -s
+	pytest -v -s
 model-test:
-	pytest -v --maxfail=0 -m model
+	pytest -v -m model
 structure-test:
-	pytest -v --maxfail=0 -m structure
+	pytest -v -m structure
 unit-test:
-	pytest -v --maxfail=0 -m unit
+	pytest -v -m unit
 schema-test:
-	pytest -v --maxfail=0 -m schema
+	pytest -v -m schema
 
 
 # Alembic migrations
