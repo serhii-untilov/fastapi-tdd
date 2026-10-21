@@ -3,10 +3,7 @@ import alembic.config
 from alembic import command
 
 
-def migrate_to_db(
-    script_location, alembic_ini_path="alembic.ini", connection=None, revision="head"
-):
+def migrate_to_db(alembic_ini_path="alembic.ini", revision="head"):
     config = alembic.config.Config(alembic_ini_path)
-    if connection is not None:
-        config.config_ini_section = "test_db"
-        command.upgrade(config, revision)
+    config.config_ini_section = "test_db"
+    command.upgrade(config, revision)

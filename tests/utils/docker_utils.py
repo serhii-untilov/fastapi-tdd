@@ -74,10 +74,16 @@ def start_database_container():
 
     try:
         existing_container = client.containers.get(container_name)
-        print(f"Container '{container_name}' exists. Stopping and removing...")
+        existing_container.reload()
+        state = existing_container.attrs["State"]
+        health = (state.get("Health") or {}).get("Status", "unknown")
+        if existing_container.status == "running" and health == "healthy":
+            print(f"Container '{container_name}' is running and healthy. Reusing it.")
+            return existing_container
+        print(f"Container '{container_name}' is {existing_container.status}/{health}. Recreating...")
         existing_container.stop()
         existing_container.remove()
-        print(f"Container '{container_name}' exists. Stopped and removed.")
+        print(f"Container '{container_name}' stopped and removed.")
     except docker.errors.NotFound:  # type: ignore
         print(f"Container '{container_name}' does not exist.")
 
