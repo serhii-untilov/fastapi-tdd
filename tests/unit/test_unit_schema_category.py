@@ -16,7 +16,7 @@ def mock_output(return_value=None):
 @pytest.mark.parametrize("category", (get_random_category_dict() for _ in range(3)))
 def test_unit_get_single_category_successfully(client, monkeypatch, category):
     monkeypatch.setattr("sqlalchemy.orm.Query.first", mock_output(category))
-    response = client.get(f"api/category/{category['slug']}")
+    response = client.get(f"api/category/slug/{category['slug']}")
     assert response.status_code == 200
     assert response.json() == category
 
@@ -24,7 +24,7 @@ def test_unit_get_single_category_successfully(client, monkeypatch, category):
 @pytest.mark.parametrize("category", (get_random_category_dict() for _ in range(3)))
 def test_unit_get_single_category_not_found(client, monkeypatch, category):
     monkeypatch.setattr("sqlalchemy.orm.Query.first", mock_output())
-    response = client.get(f"api/category/{category['slug']}")
+    response = client.get(f"api/category/slug/{category['slug']}")
     assert response.status_code == 404
     assert response.json() == {"detail": "Category not found"}
 
@@ -35,7 +35,7 @@ def test_unit_get_single_category_with_internal_server_error(client, monkeypatch
         raise Exception("Internal server error")
 
     monkeypatch.setattr("sqlalchemy.orm.Query.first", mock_exception)
-    response = client.get(f"api/category/{category['slug']}")
+    response = client.get(f"api/category/slug/{category['slug']}")
     assert response.status_code == 500
 
 

@@ -16,8 +16,8 @@ router.tags = ["Category"]
 logger = logging.getLogger(__name__)
 
 
-@router.get("/{slug}", response_model=CategoryReturn, status_code=200)
-def get_category(
+@router.get("/slug/{slug}", response_model=CategoryReturn)
+def get_category_by_slug(
     slug: str,
     db: Session = Depends(get_db_session),
 ):
@@ -35,7 +35,7 @@ def get_category(
 
 
 # Endpoint to retrieve all categories
-@router.get("/", response_model=list[CategoryReturn], status_code=200)
+@router.get("/", response_model=list[CategoryReturn])
 def category_list(db: Session = Depends(get_db_session)):
     try:
         categories = db.query(Category).all()
