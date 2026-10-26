@@ -1,0 +1,42 @@
+import os
+
+import pytest
+from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from app.main import app
+from tests.utils.database_utils import migrate_to_db
+from tests.utils.docker_utils import start_database_container
+
+
+@pytest.fixture(scope="function")
+def db_session_integration():
+    container = start_database_container()
+    url = os.getenv("TEST_DATABASE_URL") or ""
+    print("url: ", url)
+    engine = create_engine(url)
+
+    migrate_to_db("migrations", "alembic.ini")
+
+    SessionLocal = sessionmaker(autoflush=True, bind=engine)
+
+    yield SessionLocal
+
+    container.stop()
+    container.remove()
+    engine.dispose()
+
+
+@pytest.fixture()
+def override_get_db_session(db_session_integration):
+    def override():
+        return db_session_integration
+
+    app.dependency_overrides[get_db_session] = override
+
+
+@pytest.fixture(scope="function")
+def client():
+    with TestClient(app) as _client:
+        yield _client

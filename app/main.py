@@ -1,6 +1,5 @@
 import logging
 import logging.config
-
 from fastapi import FastAPI
 
 from app.routers import category_routes
