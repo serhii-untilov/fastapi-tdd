@@ -22,15 +22,15 @@ up:
 dev: up
 	uvicorn app.main:app --reload
 test:
-	psource venv/bin/activate && ytest -v -s --color=yes 2>&1 | tee logs/test.log
+	source venv/bin/activate && pytest -v -s --color=yes 2>&1 | tee logs/test.log
 model-test:
-	psource venv/bin/activate && ytest -v -m model --color=yes 2>&1 | tee logs/test.log
+	source venv/bin/activate && pytest -v -m model --color=yes 2>&1 | tee logs/test.log
 structure-test:
-	psource venv/bin/activate && ytest -v -m structure --color=yes 2>&1 | tee logs/test.log
+	source venv/bin/activate && pytest -v -m structure --color=yes 2>&1 | tee logs/test.log
 unit-test: venv
 	source venv/bin/activate && pytest -v -m unit --color=yes 2>&1 | tee logs/test.log
 schema-test:
-	psource venv/bin/activate && ytest -v -m schema --color=yes 2>&1 | tee logs/test.log
+	source venv/bin/activate && pytest -v -m schema --color=yes 2>&1 | tee logs/test.log
 
 # Alembic migrations
 
