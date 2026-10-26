@@ -1,5 +1,6 @@
 # from app.models import category
 from app.models.category import Category
+from app.schemas.responses import Status
 from tests.factories.models_factory import get_random_category_dict
 
 # def test_integrate_test_a(client, db_session_integration):
@@ -86,3 +87,33 @@ def test_integrate_get_all_categories(client, db_session_integration):
         assert response_category["slug"] == category["slug"]
         assert response_category["is_active"] == category["is_active"]
         assert response_category["level"] == category["level"]
+
+
+def test_integrate_update_category_successfully(client, db_session_integration):
+    initial_category_data = get_random_category_dict()
+    new_category = Category(**initial_category_data)
+    db_session_integration.add(new_category)
+    db_session_integration.commit()
+
+    updated_category_data = {
+        "name": "Updated Name",
+        "slug": "updated-slug",
+        "is_active": False,
+        "level": 10,
+    }
+
+    response = client.put(f"/api/category/{new_category.id}", json=updated_category_data)
+
+    assert response.status_code == 200
+    assert response.json() == Status.SUCCESS
+
+    response = client.get(f"/api/category/slug/{updated_category_data['slug']}")
+
+    assert response.status_code == 200
+
+    response_data = response.json()
+
+    assert response_data["name"] == updated_category_data["name"]
+    assert response_data["slug"] == updated_category_data["slug"]
+    assert response_data["is_active"] == updated_category_data["is_active"]
+    assert response_data["level"] == updated_category_data["level"]
