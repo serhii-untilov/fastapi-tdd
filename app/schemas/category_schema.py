@@ -15,6 +15,10 @@ class CategoryCreate(CategoryBase):
     pass
 
 
+class CategoryUpdate(CategoryBase):
+    pass
+
+
 class CategoryReturn(CategoryBase):
     id: int
 

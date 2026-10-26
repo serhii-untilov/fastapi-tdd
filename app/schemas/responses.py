@@ -7,6 +7,6 @@ class IdResponse(BaseModel):
     id: int
 
 
-class Status(Enum):
+class Status(str, Enum):
     SUCCESS = "success"
     FAILURE = "failure"

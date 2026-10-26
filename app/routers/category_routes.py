@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 
 from app.db_connection import get_db_session
 from app.models.category import Category
-from app.schemas.category_schema import CategoryCreate, CategoryReturn
-from app.schemas.responses import IdResponse
+from app.schemas.category_schema import CategoryCreate, CategoryReturn, CategoryUpdate
+from app.schemas.responses import IdResponse, Status
 
 router = APIRouter()
 
@@ -14,6 +14,70 @@ router.prefix = "/category"
 router.tags = ["Category"]
 
 logger = logging.getLogger(__name__)
+
+
+# Delete a category
+
+
+@router.delete(
+    "/{category_id}",
+    response_model=Status,
+)
+def delete_category(
+    category_id: int,
+    db: Session = Depends(get_db_session),
+) -> Status:
+    try:
+        category = db.query(Category).filter(Category.id == category_id).first()
+
+        if not category:
+            raise HTTPException(status_code=404, detail="Category not found")
+
+        db.delete(category)
+        db.flush()
+        db.commit()
+        return Status(Status.SUCCESS)
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Unexpected error while updating category: {e}")
+        raise HTTPException(status_code=500, detail="Internal error") from e
+
+
+# PUT update a category
+
+
+@router.put(
+    "/{category_id}",
+    response_model=Status,
+)
+def update_category(
+    category_id: int,
+    category_data: CategoryUpdate,
+    db: Session = Depends(get_db_session),
+) -> Status:
+    try:
+        category = db.query(Category).filter(Category.id == category_id).first()
+
+        if not category:
+            raise HTTPException(status_code=404, detail="Category not found")
+
+        for key, value in category_data.model_dump().items():
+            setattr(category, key, value)
+
+        db.flush()
+        db.commit()
+        return Status(Status.SUCCESS)
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Unexpected error while updating category: {e}")
+        raise HTTPException(status_code=500, detail="Internal error") from e
+
+
+# Get category by slug
 
 
 @router.get("/slug/{slug}", response_model=CategoryReturn)
@@ -34,7 +98,9 @@ def get_category_by_slug(
         raise HTTPException(status_code=500, detail="Internal server error") from e
 
 
-# Endpoint to retrieve all categories
+# Get all categories
+
+
 @router.get("/", response_model=list[CategoryReturn])
 def category_list(db: Session = Depends(get_db_session)):
     try:

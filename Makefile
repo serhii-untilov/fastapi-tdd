@@ -1,5 +1,8 @@
 .PHONY: freeze install dev migration-autogen-dev migrate-dev test model-test structure-test unit-test schema-test
 
+SHELL := /bin/bash
+.SHELLFLAGS := -o pipefail -c
+
 COMMENT ?="update"
 REVISION ?= head
 
@@ -19,16 +22,15 @@ up:
 dev: up
 	uvicorn app.main:app --reload
 test:
-	pytest -v -s
+	psource venv/bin/activate && ytest -v -s --color=yes 2>&1 | tee logs/test.log
 model-test:
-	pytest -v -m model
+	psource venv/bin/activate && ytest -v -m model --color=yes 2>&1 | tee logs/test.log
 structure-test:
-	pytest -v -m structure
-unit-test:
-	pytest -v -m unit
+	psource venv/bin/activate && ytest -v -m structure --color=yes 2>&1 | tee logs/test.log
+unit-test: venv
+	source venv/bin/activate && pytest -v -m unit --color=yes 2>&1 | tee logs/test.log
 schema-test:
-	pytest -v -m schema
-
+	psource venv/bin/activate && ytest -v -m schema --color=yes 2>&1 | tee logs/test.log
 
 # Alembic migrations
 
@@ -50,3 +52,4 @@ downgrade: db
 	alembic -n dev_db downgrade -1
 downgrade-base: db
 	alembic -n dev_db downgrade base
+
