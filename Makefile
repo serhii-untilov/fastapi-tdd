@@ -27,10 +27,12 @@ model-test:
 	source venv/bin/activate && pytest -v -m model --color=yes 2>&1 | tee logs/test.log
 structure-test:
 	source venv/bin/activate && pytest -v -m structure --color=yes 2>&1 | tee logs/test.log
-unit-test: venv
+unit-test: 
 	source venv/bin/activate && pytest -v -m unit --color=yes 2>&1 | tee logs/test.log
 schema-test:
 	source venv/bin/activate && pytest -v -m schema --color=yes 2>&1 | tee logs/test.log
+integrate-test: 
+	source venv/bin/activate && pytest -v -m integrate --color=yes 2>&1 | tee logs/test.log
 
 # Alembic migrations
 
