@@ -34,6 +34,13 @@ schema-test:
 integrate-test: 
 	source venv/bin/activate && pytest -v -m integrate --color=yes 2>&1 | tee logs/test.log
 
+# Covarage
+
+coverage:
+	source venv/bin/activate && \
+	coverage run -m pytest && \
+	pytest --cov=app --cov-report=html
+
 # Alembic migrations
 
 check: db

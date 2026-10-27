@@ -58,6 +58,21 @@ def test_integrate_create_category_duplicate(client, db_session_integration):
     assert response.status_code == 400
 
 
+def test_integrate_create_category_duplicate_slug(client, db_session_integration):
+    category1 = get_random_category_dict()
+    category2 = get_random_category_dict()
+
+    category1["slug"] = "same-slug"
+    category2["slug"] = "same-slug"
+
+    db_session_integration.add(Category(**category1))
+    db_session_integration.commit()
+
+    response = client.post("api/category/", json=category2)
+
+    assert response.status_code == 400
+
+
 def test_integrate_get_all_categories(client, db_session_integration):
     # Arrange: Prepare test data
 
@@ -116,3 +131,19 @@ def test_integrate_update_category_successfully(client, db_session_integration):
     assert response_data["slug"] == updated_category_data["slug"]
     assert response_data["is_active"] == updated_category_data["is_active"]
     assert response_data["level"] == updated_category_data["level"]
+
+
+def test_integrate_delete_category_successfully(client, db_session_integration):
+    category_data = get_random_category_dict()
+    category = Category(**category_data)
+    db_session_integration.add(category)
+    db_session_integration.commit()
+
+    response = client.delete(f"/api/category/{category.id}")
+
+    assert response.status_code == 200
+    assert response.json() == Status.SUCCESS
+
+    deleted_category = db_session_integration.query(Category).filter_by(id=category.id).first()
+
+    assert deleted_category is None
